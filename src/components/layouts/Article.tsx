@@ -17,10 +17,12 @@ export default function Article({
     <section
       className={cn("grid grid-cols-1", tableOfContents && "sm:grid-cols-6")}
     >
-      <aside className={cn("p-4", tableOfContents && "sm:col-span-2")}>
-        <TableOfContents article={article} />
-        <WidgetPosts />
-      </aside>
+      {tableOfContents && (
+        <aside className={cn("p-4", tableOfContents && "sm:col-span-2")}>
+          <TableOfContents article={article} />
+          <WidgetPosts />
+        </aside>
+      )}
       <article
         className={cn(
           "rounded-xl w-full mx-auto prose sm:prose-lg prose-p:text-[16px] text-gray-700",

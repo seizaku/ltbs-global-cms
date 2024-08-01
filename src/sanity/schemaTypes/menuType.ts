@@ -23,8 +23,8 @@ export const menuType = defineType({
       name: 'page',
       type: 'reference',
       to: [{ type: 'page' }],
-      hidden: ({ document }) => (document?.hasChildren || !!document?.custom_url as any),
-    }),
+      hidden: ({ document }: any) => (document?.hasChildren || !!document?.custom_url as any),
+    }  as any ),
     defineField({
       title: 'External URL',
       name: 'url',
@@ -43,8 +43,8 @@ export const menuType = defineType({
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'childMenu' }] }],
       description: 'Nested links for child menus or submenus',
-      hidden: ({ document }) => !document?.hasChildren,
-    }),
+      hidden: ({ document }: any) => !document?.hasChildren,
+    } as any),
   ],
 });
 
@@ -75,13 +75,13 @@ export const childMenuType = defineType({
       name: 'page',
       type: 'reference',
       to: [{ type: 'page' }],
-      hidden: ({ document }) => !!document?.custom_url,
-    }),
+      hidden: ({ document }: any) => !!document?.custom_url,
+    }  as any ),
     defineField({
       title: 'External URL',
       name: 'url',
       type: 'string',
-      hidden: ({ document }) => !document?.custom_url,
-    }),
+      hidden: ({ document }: any) => !document?.custom_url,
+    }  as any ),
   ],
 });

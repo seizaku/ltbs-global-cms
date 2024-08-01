@@ -23,7 +23,7 @@ export const heroType = defineType({
           title: 'Alternative text',
         }
       ]
-    }),
+    } as any),
   ],
   preview: {
     select: {

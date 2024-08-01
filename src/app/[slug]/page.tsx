@@ -28,8 +28,8 @@ export default async function DynamicPage({ params: { slug } }: DynamicPage) {
     <>
       <Navbar />
       <main className="py-12 mt-24 container max-w-4xl mx-auto min-h-[150vh]">
-        <pre>{JSON.stringify(page.body, null, 4)}</pre>
-        <Article article={page.body} tableOfContents />
+        {/* <pre>{JSON.stringify(page.body, null, 4)}</pre> */}
+        <Article article={page.body} />
       </main>
       <Footer />
     </>

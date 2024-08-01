@@ -22,14 +22,7 @@ export const bibleStudyType = defineType({
       type: 'image',
       options: {
         hotspot: true,
-      },
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        }
-      ]
+      }
     }),
     defineField({
       name: 'description',

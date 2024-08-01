@@ -22,29 +22,17 @@ export const postType = defineType({
       },
     }),
     defineField({
-      name: 'author',
-      type: 'reference',
-      to: {type: 'author'},
-    }),
-    defineField({
       name: 'mainImage',
       type: 'image',
       options: {
         hotspot: true,
-      },
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        }
-      ]
+      }
     }),
     defineField({
       name: 'categories',
       type: 'array',
       of: [{type: 'reference', to: {type: 'category'}}],
-    }),
+    }  as any ),
     defineField({
       name: 'publishedAt',
       type: 'datetime',
@@ -57,12 +45,10 @@ export const postType = defineType({
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
       media: 'mainImage',
     },
     prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
+      return {...selection}
     },
   },
 })

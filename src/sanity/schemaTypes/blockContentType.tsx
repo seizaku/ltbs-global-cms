@@ -58,7 +58,7 @@ export const blockContentType = defineType({
           },
         ],
       },
-    }),
+    } as any),
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
@@ -73,7 +73,7 @@ export const blockContentType = defineType({
           title: "Alternative Text",
         },
       ],
-    }),
+    } as any),
     defineArrayMember({
       type: "object",
       name: "horizontal_rule",
@@ -94,7 +94,7 @@ export const blockContentType = defineType({
           };
         },
       },
-    }),
+    } as any),
     defineArrayMember({
       type: "object",
       name: "youtube_embed",
@@ -111,14 +111,14 @@ export const blockContentType = defineType({
         select: {
           url: "url",
         },
-        prepare({ url }) {
+        prepare({ url }: any) {
           return {
             title: "Youtube Embed",
             media: <YouTubeEmbed value={url} />,
           };
         },
       },
-    }),
+    } as any),
     defineArrayMember({
       ...heroType,
     }),
