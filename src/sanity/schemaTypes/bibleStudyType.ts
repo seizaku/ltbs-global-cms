@@ -1,9 +1,9 @@
 import { orderRankField } from '@sanity/orderable-document-list'
 import {defineField, defineType} from 'sanity'
 
-export const postType = defineType({
-  name: 'post',
-  title: 'News & Events',
+export const bibleStudyType = defineType({
+  name: 'bibleStudy',
+  title: 'Bible Study',
   type: 'document',
   fields: [
     orderRankField({
@@ -14,17 +14,8 @@ export const postType = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-    }),
-    defineField({
-      name: 'author',
-      type: 'reference',
-      to: {type: 'author'},
+      name: 'url',
+      type: 'string',
     }),
     defineField({
       name: 'mainImage',
@@ -41,28 +32,21 @@ export const postType = defineType({
       ]
     }),
     defineField({
-      name: 'categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
+      name: 'description',
+      type: 'text',
     }),
     defineField({
       name: 'publishedAt',
       type: 'datetime',
     }),
-    defineField({
-      name: 'body',
-      type: 'blockContent',
-    }),
   ],
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
       media: 'mainImage',
     },
     prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
+      return {...selection}
     },
   },
 })

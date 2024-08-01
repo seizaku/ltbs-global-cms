@@ -1,0 +1,63 @@
+import { sanityFetch } from "@/sanity/lib/client";
+import React from "react";
+import { Card } from "../Card";
+import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
+import { urlFor } from "@/sanity/lib/image";
+import Image from "next/image";
+import Link from "next/link";
+
+interface ArchiveSection {
+  type: string;
+  title: string;
+  description?: string;
+  limit?: number;
+  archiveURL: string;
+}
+
+export async function ArchiveSection({
+  type,
+  title,
+  description,
+  limit,
+  archiveURL,
+}: ArchiveSection) {
+  const ARCHIVE_QUERY = `*[_type == "${type}"] | order(_createdAt desc) [0...${limit ?? 4}] {
+    _id,
+    title,
+    description,
+    "excerpt": array::join(string::split((pt::text(body)), "")[0..100], "") + "...",
+    slug,
+    _createdAt,
+    mainImage,
+    body,
+    categories[]-> {
+      _id,
+      title
+    }
+  }`;
+
+  const archive = await sanityFetch<any[]>({ query: ARCHIVE_QUERY });
+
+  return (
+    <section className="p-6 mt-4">
+      <Link href={archiveURL}>
+        <h1 className="text-4xl font-medium">{title}</h1>
+      </Link>
+      <p className="max-w-xl mt-2">{description}</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 mt-6">
+        {archive?.map((item) => (
+          <Card
+            key={item._id}
+            href={
+              item.slug ? `${archiveURL}/${item.slug.current}` : `${item.url}`
+            }
+            src={item.mainImage.asset._ref}
+            title={item.title}
+            description={item.description || item.excerpt}
+            categories={"categories" in item ? item?.categories : []}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
