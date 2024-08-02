@@ -20,8 +20,8 @@ export const RichTextComponents: any = {
           description={value.description}
           type={value.type}
           limit={value.limit}
-          archiveURL={value.type == "post" ? "/posts" : ""}
-          columns={value.columns || 1}
+          archiveURL={value.type == "post" ? "/news-and-events" : ""}
+          columns={value.columns}
         />
       );
     },

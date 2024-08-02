@@ -50,7 +50,7 @@ export async function ArchiveSection({
       <div
         className={cn(
           "grid grid-cols-1 gap-8 mt-6",
-          columns && "sm:grid-cols-",
+          columns && `sm:grid-cols-${columns}`,
         )}
       >
         {archive?.map((item) => (
