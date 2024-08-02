@@ -5,6 +5,7 @@ import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 interface ArchiveSection {
   type: string;
@@ -12,6 +13,7 @@ interface ArchiveSection {
   description?: string;
   limit?: number;
   archiveURL: string;
+  columns?: number;
 }
 
 export async function ArchiveSection({
@@ -20,6 +22,7 @@ export async function ArchiveSection({
   description,
   limit,
   archiveURL,
+  columns,
 }: ArchiveSection) {
   const ARCHIVE_QUERY = `*[_type == "${type}"] | order(_createdAt desc) [0...${limit ?? 4}] {
     _id,
@@ -44,7 +47,12 @@ export async function ArchiveSection({
         <h1 className="text-4xl font-medium">{title}</h1>
       </Link>
       <p className="max-w-xl mt-2">{description}</p>
-      <div className="grid grid-cols-1 gap-4 mt-6">
+      <div
+        className={cn(
+          "grid grid-cols-1 gap-8 mt-6",
+          columns && "sm:grid-cols-",
+        )}
+      >
         {archive?.map((item) => (
           <Card
             key={item._id}

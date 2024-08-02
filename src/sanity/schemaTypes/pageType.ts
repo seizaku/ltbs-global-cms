@@ -22,6 +22,25 @@ export const pageType = defineType({
       },
     }),
     defineField({
+      title: 'Image Only',
+      name: 'imageOnly',
+      type: 'boolean',
+      description: 'Check this you want to hide page title',
+    }),
+    defineField({
+      title: 'Hide Side Widget',
+      name: 'hideWidgets',
+      type: 'boolean',
+      description: 'Check this you want to side widgets',
+    }),
+    defineField({
+      name: 'mainImage',
+      type: 'image',
+      options: {
+        hotspot: true,
+      }
+    }),
+    defineField({
       name: 'body',
       type: 'blockContent',
     }),

@@ -21,6 +21,7 @@ export const RichTextComponents: any = {
           type={value.type}
           limit={value.limit}
           archiveURL={value.type == "post" ? "/posts" : ""}
+          columns={value.columns || 1}
         />
       );
     },

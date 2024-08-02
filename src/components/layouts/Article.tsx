@@ -9,18 +9,17 @@ import { WidgetPosts } from "@/components/WidgetWidgetPosts";
 export default function Article({
   article,
   tableOfContents,
+  hideWidgets,
 }: {
   article: (Block | Image)[];
   tableOfContents?: boolean;
+  hideWidgets?: boolean;
 }) {
   return (
     <section
-      className={cn(
-        "grid grid-cols-1",
-        tableOfContents && "sm:grid-cols-6 gap-4",
-      )}
+      className={cn("grid grid-cols-1", !hideWidgets && "sm:grid-cols-6 gap-4")}
     >
-      {tableOfContents && (
+      {!hideWidgets && (
         <aside className={cn("p-4", tableOfContents && "sm:col-span-2")}>
           <TableOfContents article={article} />
           <WidgetPosts />

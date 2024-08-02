@@ -121,9 +121,6 @@ export const blockContentType = defineType({
       },
     } as any),
     defineArrayMember({
-      ...heroType,
-    }),
-    defineArrayMember({
       ...archiveType,
     }),
   ],

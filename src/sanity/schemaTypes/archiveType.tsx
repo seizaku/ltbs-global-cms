@@ -31,6 +31,10 @@ export const archiveType = defineType({
       },
     }),
     defineField({
+      name: "columns",
+      type: "number",
+    }),
+    defineField({
       name: "limit",
       type: "number",
     }),
