@@ -15,7 +15,7 @@ export const RichTextComponents: any = {
     image: ({ value }: any) => {
       return <img src={urlFor(value.asset._ref).url()} />;
     },
-    callToActioType: ({ value }: any) => {
+    cta: ({ value }: any) => {
       return (
         <CTASection
           title={value.title}
