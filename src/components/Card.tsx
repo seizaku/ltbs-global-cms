@@ -24,7 +24,7 @@ export function Card({
     <Link
       href={href}
       className={cn(
-        "hover:bg-primary/5 flex flex-col sm:flex-row w-fit gap-8 items-center p-4 ease-in-out rounded-xl duration-200 transition-all prose-h4:m-0 prose-h4 prose-h4:font-medium prose-p:text-sm prose-p:text-muted-foreground prose-img:my-0",
+        "hover:bg-primary/5 flex flex-col sm:flex-row w-full gap-8 items-center p-4 ease-in-out rounded-xl duration-200 transition-all prose-h4:m-0 prose-h4 prose-h4:font-medium prose-p:text-sm prose-p:text-muted-foreground prose-img:my-0",
         column && "flex-col",
       )}
     >

@@ -27,8 +27,12 @@ export async function ArchiveSection({
   const ARCHIVE_QUERY = `*[_type == "${type}"] | order(_createdAt desc) [0...${limit ?? 4}] {
     _id,
     title,
+    url,
     description,
-    "excerpt": array::join(string::split((pt::text(body)), "")[0..100], "") + "...",
+    "excerpt": coalesce(
+      array::join(string::split(description, "")[0..100], "") + "...",
+      array::join(string::split((pt::text(body)), "")[0..100], "") + "..."
+    ),
     slug,
     _createdAt,
     mainImage,
@@ -42,7 +46,7 @@ export async function ArchiveSection({
   const archive = await sanityFetch<any[]>({ query: ARCHIVE_QUERY });
   console.log("Columns: ", columns);
   return (
-    <section className="p-4 mt-4 prose-a:no-underline">
+    <section className="p-4 mt-4 prose-a:no-underline w-full">
       <Link href={archiveURL}>
         <h1 className="text-4xl font-medium">{title}</h1>
       </Link>
@@ -54,7 +58,7 @@ export async function ArchiveSection({
             href={item.slug ? `/post/${item.slug.current}` : `${item.url}`}
             src={item.mainImage.asset._ref}
             title={item.title}
-            description={item.description || item.excerpt}
+            description={item.excerpt}
             categories={"categories" in item ? item?.categories : []}
           />
         ))}
