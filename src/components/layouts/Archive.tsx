@@ -40,7 +40,7 @@ export async function ArchiveSection({
   }`;
 
   const archive = await sanityFetch<any[]>({ query: ARCHIVE_QUERY });
-
+  console.log("Columns: ", columns);
   return (
     <section className="p-6 mt-4 prose-a:no-underline">
       <Link href={archiveURL}>
@@ -48,10 +48,7 @@ export async function ArchiveSection({
       </Link>
       <p className="max-w-xl mt-2">{description}</p>
       <div
-        className={cn(
-          "grid grid-cols-1 gap-8 mt-6",
-          columns && `sm:grid-cols-${columns}`,
-        )}
+        className={cn("grid gap-8 mt-6", columns && `sm:grid-cols-${columns}`)}
       >
         {archive?.map((item) => (
           <Card
