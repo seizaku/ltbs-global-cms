@@ -24,11 +24,15 @@ export function Card({
     <Link
       href={href}
       className={cn(
-        "hover:bg-primary/5 flex w-fit gap-8 items-center p-4 ease-in-out rounded-xl duration-200 transition-all prose-h4:m-0 prose-h4 prose-h4:font-medium prose-p:text-sm prose-p:text-muted-foreground prose-img:my-0",
+        "hover:bg-primary/5 flex flex-col sm:flex-row w-fit gap-8 items-center p-4 ease-in-out rounded-xl duration-200 transition-all prose-h4:m-0 prose-h4 prose-h4:font-medium prose-p:text-sm prose-p:text-muted-foreground prose-img:my-0",
         column && "flex-col",
       )}
     >
-      <div className={cn("relative w-96 h-44 rounded-xl overflow-hidden")}>
+      <div
+        className={cn(
+          "relative w-full sm:w-96 h-44 rounded-xl overflow-hidden",
+        )}
+      >
         <Image
           src={urlFor(src).url()}
           layout="fill"
