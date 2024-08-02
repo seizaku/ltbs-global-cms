@@ -16,9 +16,9 @@ export default function CTASection({
   href,
 }: CTASection) {
   return (
-    <section className="py-12 flex flex-col items-center gap-4 text-center bg-muted rounded-xl my-12">
+    <section className="py-12 flex flex-col items-center gap-4 text-center bg-muted rounded-xl my-12 prose-a:no-underline prose-p:text-sm prose-h1:my-0">
       <h1 className="text-lg sm:text-3xl font-medium">{title}</h1>
-      <p className="text-sm:text-lg max-w-sm sm:max-w-md">{description}</p>
+      <p className="text-sm:text-lg max-w-sm sm:max-w-xl">{description}</p>
       <Link href={href} className={buttonVariants()}>
         {ctaText}
       </Link>
