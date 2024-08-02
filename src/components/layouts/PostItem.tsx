@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function PostItem({ item }: { item: Post }) {
   return (
     <Link
-      href={`/posts/${item.slug.current}`}
+      href={`/post/${item.slug.current}`}
       className="text-muted-foreground flex items-center gap-4 overflow-hidden group"
     >
       <Image

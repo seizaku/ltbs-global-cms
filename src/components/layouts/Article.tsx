@@ -28,7 +28,7 @@ export default function Article({
       )}
       <article
         className={cn(
-          "rounded-xl w-full mx-auto prose sm:prose-lg prose-p:text-[16px] text-foreground",
+          "rounded-xl w-full mx-auto prose sm:prose-lg prose-p:text-[16px] text-foreground pt-4",
           tableOfContents && "sm:col-span-4 dark:prose-invert",
         )}
       >

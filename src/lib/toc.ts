@@ -16,9 +16,11 @@ export const getTableOfContents = (blocks: Block[]): TocItem[] => {
   const toc: TocItem[] = [];
   const stack: TocItem[] = [ { title: '', slug: '', children: toc } ]; // Root level with an empty title
 
+  let headings = ["h1", "h2", "h3", "h4", "h5", "h6"]
+
   blocks.forEach(block => {
-    if (block._type === 'block' && block.style && block.style.startsWith('h')) {
-      const level = parseInt(block.style.slice(1) || '1');
+    if (block._type == "block" && headings.includes(block.style!.toLowerCase())) {
+      const level = parseInt(block.style!.slice(1) || '1');
       const text = block.children?.map(child => child.text).join('') || '';
       const slug = text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 
@@ -38,6 +40,5 @@ export const getTableOfContents = (blocks: Block[]): TocItem[] => {
       stack.push(tocItem);
     }
   });
-
-  return toc;
+  return stack;
 };
