@@ -23,7 +23,7 @@ export default function PostItem({ item }: { item: Post }) {
         <h6 className="text-xs font-medium text-muted-foreground group-hover:text-foreground">
           {item.title.slice(0, 30) + "..."}
         </h6>
-        <span className="text-muted-foreground mt-2">
+        <span className="text-muted-foreground mt-2 text-xs">
           {moment(item._createdAt).format("LL")}
         </span>
       </div>
