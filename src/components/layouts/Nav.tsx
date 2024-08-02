@@ -3,7 +3,7 @@ import { Menu as NavigationMenu } from "../Menu";
 import Link from "next/link";
 import Image from "next/image";
 
-const MENU_QUERY = `*[_type == "menu"] | order(orderRank) [0...6] {
+const MENU_QUERY = `*[_type == "menu"] | order(orderRank) {
   title,
   custom_url,
   "linkToPage": page->slug.current,
