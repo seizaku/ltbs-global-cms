@@ -3,6 +3,8 @@ import { urlFor } from "@/sanity/lib/image";
 import { YouTubeEmbed } from "./layouts/YoutubeEmbed";
 import { sluggify } from "@/sanity/lib/sluggify";
 import { ArchiveSection } from "./layouts/Archive";
+import { callToActionType } from "@/sanity/schemaTypes/callToActionType";
+import CTASection from "./layouts/CTA";
 
 export const RichTextComponents: any = {
   types: {
@@ -12,6 +14,16 @@ export const RichTextComponents: any = {
     horizontal_rule: () => <hr className="my-2" />,
     image: ({ value }: any) => {
       return <img src={urlFor(value.asset._ref).url()} />;
+    },
+    callToActioType: ({ value }: any) => {
+      return (
+        <CTASection
+          title={value.title}
+          description={value.description}
+          ctaText={value.ctaText}
+          href={value.ctaURL}
+        />
+      );
     },
     archive: ({ value }: any) => {
       return (

@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 
-export const callToActioType = defineType({
+export const callToActionType = defineType({
   name: "cta",
   title: "Call To Action",
   type: "object",
@@ -14,7 +14,13 @@ export const callToActioType = defineType({
       type: "text",
     }),
     defineField({
-      name: "Call To Action URL",
+      name: "ctaText",
+      title: "Call To Action Text",
+      type: "string",
+    }),
+    defineField({
+      name: "ctaURL",
+      title: "Call To Action URL",
       type: "string",
     }),
   ],
