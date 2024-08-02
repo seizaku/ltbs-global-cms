@@ -2,6 +2,7 @@
 import { urlFor } from "@/sanity/lib/image";
 import { YouTubeEmbed } from "./layouts/YoutubeEmbed";
 import { sluggify } from "@/sanity/lib/sluggify";
+import { ArchiveSection } from "./layouts/Archive";
 
 export const RichTextComponents: any = {
   types: {
@@ -12,7 +13,17 @@ export const RichTextComponents: any = {
     image: ({ value }: any) => {
       return <img src={urlFor(value.asset._ref).url()} />;
     },
-    archive: ({ value }: any) => {},
+    archive: ({ value }: any) => {
+      return (
+        <ArchiveSection
+          title={value.title}
+          description={value.description}
+          type={value.type}
+          limit={value.limit}
+          archiveURL={value.type == "post" ? "/posts" : ""}
+        />
+      );
+    },
   },
   block: {
     h1: ({ children, value }: any) => (

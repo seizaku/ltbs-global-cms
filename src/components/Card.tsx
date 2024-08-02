@@ -21,21 +21,21 @@ export function Card({
     <Link
       href={href}
       className={
-        "hover:bg-primary/5 ease-in-out p-4 rounded-xl duration-200 transition-all"
+        "hover:bg-primary/5 p-4 ease-in-out rounded-xl duration-200 transition-all prose-h3:m-0 prose-h3:my-2 prose-h3:font-medium prose-p:text-sm prose-p:text-muted-foreground prose-img:my-0 mb-4"
       }
     >
-      <div className="h-64 w-full overflow-hidden rounded-xl">
+      <div className="h-fit w-full overflow-hidden rounded-xl my-0">
         <Image
           src={urlFor(src).url()}
           height={400}
           width={400}
           alt="12"
-          className="h-full w-full object-cover rounded-xl"
+          className="w-full object-cover rounded-xl my-0 py-0"
         />
       </div>
-      <h2 className="mt-4 font-medium">{title}</h2>
-      <p className="text-sm mt-2">{description}</p>
-      <div className="flex flex-wrap gap-2 mt-2">
+      <h3>{title}</h3>
+      <p className="text-sm">{description}</p>
+      <div className="flex flex-wrap gap-2">
         {categories?.map((category) => (
           <Badge
             key={category._id}

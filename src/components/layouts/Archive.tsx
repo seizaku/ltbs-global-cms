@@ -39,18 +39,16 @@ export async function ArchiveSection({
   const archive = await sanityFetch<any[]>({ query: ARCHIVE_QUERY });
 
   return (
-    <section className="p-6 mt-4">
+    <section className="p-6 mt-4 prose-a:no-underline">
       <Link href={archiveURL}>
         <h1 className="text-4xl font-medium">{title}</h1>
       </Link>
       <p className="max-w-xl mt-2">{description}</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 mt-6">
+      <div className="grid grid-cols-1 gap-4 mt-6">
         {archive?.map((item) => (
           <Card
             key={item._id}
-            href={
-              item.slug ? `${archiveURL}/${item.slug.current}` : `${item.url}`
-            }
+            href={item.slug ? `/post/${item.slug.current}` : `${item.url}`}
             src={item.mainImage.asset._ref}
             title={item.title}
             description={item.description || item.excerpt}

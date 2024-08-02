@@ -4,12 +4,15 @@ import { Navbar } from "@/components/layouts/Nav";
 import { Footer } from "@/components/layouts/Footer";
 import Article from "@/components/layouts/Article";
 import Error from "@/components/Error";
+import { redirect } from "next/navigation";
 
 interface DynamicPage {
   params: { slug: string };
 }
 
 export default async function DynamicPage({ params: { slug } }: DynamicPage) {
+  if (slug == "home") return redirect("/");
+
   const PAGE_QUERY = `*[_type == "page" && slug.current == "${slug}"][0]  {
     _id,
     title,

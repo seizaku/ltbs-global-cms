@@ -2,6 +2,7 @@ import { defineType, defineArrayMember, defineField } from "sanity";
 import { ImageIcon, StackIcon, PlayIcon } from "@sanity/icons";
 import { YouTubeEmbed } from "@/components/layouts/YoutubeEmbed";
 import { heroType } from "./heroType";
+import { archiveType } from "./archiveType";
 
 /**
  * This is the schema type for block content used in the post document type
@@ -121,6 +122,9 @@ export const blockContentType = defineType({
     } as any),
     defineArrayMember({
       ...heroType,
+    }),
+    defineArrayMember({
+      ...archiveType,
     }),
   ],
 });
