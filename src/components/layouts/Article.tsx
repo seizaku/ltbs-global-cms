@@ -15,7 +15,10 @@ export default function Article({
 }) {
   return (
     <section
-      className={cn("grid grid-cols-1", tableOfContents && "sm:grid-cols-6")}
+      className={cn(
+        "grid grid-cols-1",
+        tableOfContents && "sm:grid-cols-6 gap-4",
+      )}
     >
       {tableOfContents && (
         <aside className={cn("p-4", tableOfContents && "sm:col-span-2")}>
@@ -25,8 +28,8 @@ export default function Article({
       )}
       <article
         className={cn(
-          "rounded-xl w-full mx-auto prose sm:prose-lg prose-p:text-[16px] text-gray-700",
-          tableOfContents && "sm:col-span-4",
+          "rounded-xl w-full mx-auto prose sm:prose-lg prose-p:text-[16px] text-foreground",
+          tableOfContents && "sm:col-span-4 dark:prose-invert",
         )}
       >
         <PortableText value={article} components={RichTextComponents} />

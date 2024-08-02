@@ -19,8 +19,8 @@ export async function WidgetPosts() {
   const post = await sanityFetch<Post[]>({ query: POST_QUERY });
 
   return (
-    <div className="mt-2">
-      <h5 className="text-slate-900 font-semibold mb-4 text-sm leading-6 dark:text-slate-100">
+    <div className="mt-4">
+      <h5 className="font-semibold mb-4 text-sm leading-6 text-foreground">
         Recent Posts
       </h5>
       <ul className="flex flex-col gap-2">

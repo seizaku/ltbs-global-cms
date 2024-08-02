@@ -21,7 +21,7 @@ export function Card({
     <Link
       href={href}
       className={
-        "hover:bg-gray-50 ease-in-out p-4 rounded-xl duration-200 transition-all"
+        "hover:bg-primary/5 ease-in-out p-4 rounded-xl duration-200 transition-all"
       }
     >
       <div className="h-64 w-full overflow-hidden rounded-xl">

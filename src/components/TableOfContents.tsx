@@ -26,7 +26,12 @@ const scrollIntoView = (slug: string) => {
 const renderTocItems = (items: TocItem[], level = 0) => {
   console.log(level * 2);
   return (
-    <ul className={cn("text-slate-700 text-sm leading-6", `pl-${level * 4}`)}>
+    <ul
+      className={cn(
+        "text-muted-foreground text-sm leading-6",
+        `pl-${level * 4}`,
+      )}
+    >
       {items.map((item) => (
         <li key={item.slug}>
           <a
@@ -49,9 +54,9 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ article }) => {
   const tocItems: TocItem[] = getTableOfContents(article);
   return (
     <div>
-      {tocItems.length && (
+      {!!tocItems.length && (
         <>
-          <h5 className="text-slate-900 font-semibold mb-4 text-sm leading-6 dark:text-slate-100">
+          <h5 className="font-semibold mb-4 text-sm leading-6 text-foreground">
             Table of Contents
           </h5>
           {renderTocItems(tocItems)}

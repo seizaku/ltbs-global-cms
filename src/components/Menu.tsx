@@ -14,6 +14,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { SideNavMenu } from "./layouts/Sidenav";
+import { ModeToggle } from "./ModeToggle";
 
 export function Menu({ menu }: { menu: Menu }) {
   return (
@@ -30,7 +31,7 @@ export function Menu({ menu }: { menu: Menu }) {
                       <ListItem
                         key={child.title}
                         title={child.title}
-                        href={`${child.custom_url ? child.url : child.linkToPage}`}
+                        href={`${child.custom_url ? child.url : `/${child.linkToPage}`}`}
                       >
                         {child.description}
                       </ListItem>
@@ -40,7 +41,7 @@ export function Menu({ menu }: { menu: Menu }) {
               </>
             ) : (
               <Link
-                href={`/${item.custom_url ? item.url : item.linkToPage}`}
+                href={`${item.custom_url ? item.url : `/${item.linkToPage}`}`}
                 legacyBehavior
                 passHref
               >
@@ -51,6 +52,7 @@ export function Menu({ menu }: { menu: Menu }) {
             )}
           </NavigationMenuItem>
         ))}
+
         <NavigationMenuItem className="md:hidden">
           <SideNavMenu links={menu} />
         </NavigationMenuItem>

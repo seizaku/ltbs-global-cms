@@ -14,6 +14,7 @@ import { Footer } from "@/components/layouts/Footer";
 import TableOfContents from "@/components/TableOfContents";
 import { getTableOfContents } from "@/lib/toc";
 import Article from "@/components/layouts/Article";
+import Error from "@/components/Error";
 
 interface SinglePost {
   params: { slug: string };
@@ -34,6 +35,10 @@ export default async function SinglePost({ params: { slug } }: SinglePost) {
   }`;
 
   const post = await sanityFetch<Post>({ query: POST_QUERY });
+
+  if (!post) {
+    return <Error />;
+  }
 
   return (
     <>

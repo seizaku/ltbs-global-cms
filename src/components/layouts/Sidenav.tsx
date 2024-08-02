@@ -1,16 +1,6 @@
 import { Button, buttonVariants } from "@/components/ui/button";
 
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { sanityFetch } from "@/sanity/lib/client";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import CollabsibleMenu from "../CollabsibleMenu";
 import Link from "next/link";
@@ -41,7 +31,7 @@ export async function SideNavMenu({ links }: { links: Menu }) {
               ) : (
                 <Link
                   className={buttonVariants({ variant: "ghost" })}
-                  href={`/${item.custom_url ? item.url : item.linkToPage}`}
+                  href={`${item.custom_url ? item.url : `/${item.linkToPage}`}`}
                 >
                   {item.title}
                 </Link>
